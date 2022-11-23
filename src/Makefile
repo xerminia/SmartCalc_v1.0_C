@@ -61,8 +61,5 @@ clean:
 	rm -rf *.o  *.gc* report *.a tests test test.info build
 
 check: tests
-	cp ../materials/linters/CPPLINT.cfg CPPLINT.cfg
-	python3 ../materials/linters/cpplint.py --extensions=c *.c
 	cppcheck --enable=all --suppress=missingIncludeSystem *.c
 	CK_FORK=no leaks --atExit -- ./tests
-	rm -rf CPPLINT.cfg
